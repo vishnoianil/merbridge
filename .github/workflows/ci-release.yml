@@ -68,7 +68,7 @@ jobs:
         with:
           images: |
             ghcr.io/vishnoianil/merbridge
-            vishnoianil/merbridge
+            avishnoi/merbridge
           tags: |
             type=semver,pattern={{version}}
 

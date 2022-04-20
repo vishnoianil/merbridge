@@ -60,7 +60,7 @@ spec:
         app: merbridge
     spec:
       containers:
-      - image: "ghcr.io/merbridge/merbridge:latest"
+      - image: "ghcr.io/vishnoianil/merbridge:latest"
         imagePullPolicy: Always
         name: merbridge
         args:
@@ -92,7 +92,7 @@ spec:
           - mountPath: /host/ips
             name: host-ips
       initContainers:
-      - image: "ghcr.io/merbridge/merbridge:latest"
+      - image: "ghcr.io/vishnoianil/merbridge:latest"
         imagePullPolicy: Always
         name: init
         args:

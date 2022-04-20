@@ -82,7 +82,7 @@ jobs:
         with:
           images: |
             ghcr.io/vishnoianil/merbridge
-            vishnoianil/merbridge
+            avishnoi/merbridge
           tags: |
             type=raw,value=latest
 
