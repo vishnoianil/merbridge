@@ -21,6 +21,9 @@ limitations under the License.
 
 __section("cgroup/recvmsg4") int mb_recvmsg4(struct bpf_sock_addr *ctx)
 {
+    debugf("cgroup/recvmsg4 entry");
+    return 1;
+
 #if MESH != ISTIO
     // only works on istio
     return 1;

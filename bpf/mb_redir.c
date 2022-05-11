@@ -20,6 +20,9 @@ limitations under the License.
 
 __section("sk_msg") int mb_msg_redir(struct sk_msg_md *msg)
 {
+    debugf("sk_msg entry");
+    return 1;
+
     struct pair p = {
         .dip = msg->local_ip4,
         .dport = bpf_htons(msg->local_port),

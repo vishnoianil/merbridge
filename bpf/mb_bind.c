@@ -23,6 +23,8 @@ limitations under the License.
 // 0.0.0.0:4140
 __section("cgroup/bind4") int mb_bind(struct bpf_sock_addr *ctx)
 {
+    debugf("cgroup/bind4 entry");
+    return 1;
 #if MESH != LINKERD
     // only works on linkerd
     return 1;
