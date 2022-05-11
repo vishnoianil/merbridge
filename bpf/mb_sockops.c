@@ -70,6 +70,9 @@ static inline int sockops_ipv4(struct bpf_sock_ops *skops)
 
 __section("sockops") int mb_sockops(struct bpf_sock_ops *skops)
 {
+    debugf("sockops entry");
+    return 1;
+
     __u32 family, op;
     family = skops->family;
     op = skops->op;

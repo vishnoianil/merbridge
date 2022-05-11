@@ -264,6 +264,9 @@ static inline int tcp4_connect(struct bpf_sock_addr *ctx)
 
 __section("cgroup/connect4") int mb_sock4_connect(struct bpf_sock_addr *ctx)
 {
+    debugf("cgroup/connect4 entry");
+    return 1;
+
     switch (ctx->protocol) {
     case IPPROTO_TCP:
         return tcp4_connect(ctx);
