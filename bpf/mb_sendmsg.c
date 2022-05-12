@@ -21,9 +21,6 @@ limitations under the License.
 
 __section("cgroup/sendmsg4") int mb_sendmsg4(struct bpf_sock_addr *ctx)
 {
-    debugf("cgroup/sendmsg4 entry");
-    return 1;
-
 #if MESH != ISTIO
     // only works on istio
     return 1;
