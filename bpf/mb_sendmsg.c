@@ -21,24 +21,25 @@ limitations under the License.
 
 __section("cgroup/sendmsg4") int mb_sendmsg4(struct bpf_sock_addr *ctx)
 {
-    debugf("cgroup/sendmsg4 entry");
-    return 1;
-
 #if MESH != ISTIO
     // only works on istio
     return 1;
 #endif
+    debugf("skip dns send messages");
+    return 1;
+
     if (bpf_htons(ctx->user_port) != 53) {
-        return 1;
-    }
-    if (!(is_port_listen_current_ns(ctx, 0, OUT_REDIRECT_PORT) &&
-          is_port_listen_udp_current_ns(ctx, 0x7f000001, DNS_CAPTURE_PORT))) {
-        // this query is not from mesh injected pod, or DNS CAPTURE not enabled.
-        // we do nothing.
         return 1;
     }
     __u64 uid = bpf_get_current_uid_gid() & 0xffffffff;
     if (uid != SIDECAR_USER_ID) {
+        if (!(is_port_listen_current_ns(ctx, 0, OUT_REDIRECT_PORT) &&
+              is_port_listen_udp_current_ns(ctx, 0x7f000001,
+                                            DNS_CAPTURE_PORT))) {
+            // this query is not from mesh injected pod, or DNS CAPTURE not
+            // enabled. we do nothing.
+            return 1;
+        }
         __u64 cookie = bpf_get_socket_cookie_addr(ctx);
         // needs rewrite
         struct origin_info origin = {.ip = ctx->user_ip4,

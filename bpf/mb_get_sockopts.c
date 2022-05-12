@@ -23,9 +23,6 @@ limitations under the License.
 
 __section("cgroup/getsockopt") int mb_get_sockopt(struct bpf_sockopt *ctx)
 {
-    debugf("cgroup/getsockopt entry");
-    return 1;
-
     // currently, eBPF can not deal with optlen more than 4096 bytes, so, we
     // should limit this.
     if (ctx->optlen > MAX_OPS_BUFF_LENGTH) {
