@@ -67,8 +67,8 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            ghcr.io/merbridge/merbridge
-            merbridge/merbridge
+            ghcr.io/vishnoianil/merbridge
+            avishnoi/merbridge
           tags: |
             type=semver,pattern={{version}}
 
