@@ -61,7 +61,7 @@ spec:
     spec:
       hostNetwork: true
       containers:
-      - image: "ghcr.io/merbridge/merbridge:latest"
+      - image: "ghcr.io/vishnoianil/merbridge:latest"
         imagePullPolicy: Always
         name: merbridge
         args:
@@ -72,6 +72,7 @@ spec:
         - /host/ips/ips.txt
         - --use-reconnect=false
         - --cni-mode=false
+        - --dns-redir=false
         lifecycle:
           preStop:
             exec:
@@ -103,7 +104,7 @@ spec:
             name: host-var-run
             mountPropagation: Bidirectional
       initContainers:
-      - image: "ghcr.io/merbridge/merbridge:latest"
+      - image: "ghcr.io/vishnoianil/merbridge:latest"
         imagePullPolicy: Always
         name: init
         args:

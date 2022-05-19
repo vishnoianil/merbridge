@@ -8,11 +8,12 @@ namespace: istio-system
 mode: istio
 ipsFilePath: /host/ips/ips.txt
 cniMode: false
+dnsRedir: false
 
 # some settings of deployment
 image:
   hub: ghcr.io
-  repository: merbridge/merbridge
+  repository: vishnoianil/merbridge
   # Overrides the image tag whose default is the latest version.
   tag: latest
   pullPolicy: Always
